@@ -13,7 +13,7 @@ RUN /usr/local/openresty/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
 
 # FROM --platform=linux/amd64 openresty/openresty:1.21.4.2-alpine
 FROM openresty/openresty:1.21.4.2-alpine
-EXPOSE 80 443 3000
+EXPOSE 180 1443 13000
 
 RUN mkdir /app
 WORKDIR /app
