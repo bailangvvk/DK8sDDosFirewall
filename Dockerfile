@@ -21,7 +21,7 @@ ADD record.lua   /app
 # FROM --platform=linux/amd64 openresty/openresty:1.21.4.2-alpine
 # FROM openresty/openresty:1.21.4.2-alpine
 FROM bailangvvking/openresty:latest
-EXPOSE 180 1443 13000
+EXPOSE 80 443 3000
 
 USER root
 RUN mkdir /app
