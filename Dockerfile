@@ -36,7 +36,7 @@ ADD stats.lua       /app/stats.lua
 ADD protect.lua     /app/protect.lua
 ADD record.lua      /app/record.lua
 ADD cert.key        /app/cert.key
-ADD cert.pem        /app/cert.pem
+ADD cert.crt        /app/cert.crt
 ADD env.conf        /app/env.conf
 ADD nginx.conf      /app/nginx.conf
 
