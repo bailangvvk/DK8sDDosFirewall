@@ -1,6 +1,7 @@
 # FROM openresty/openresty:1.21.4.2-alpine as builder
 # FROM openresty/openresty:1.27.1.2-alpine as builder
 FROM bailangvvking/openresty:latest as builder
+USER root
 RUN mkdir /app
 WORKDIR /app
 
@@ -21,6 +22,7 @@ RUN /usr/local/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
 FROM bailangvvking/openresty:latest
 EXPOSE 180 1443 13000
 
+USER root
 RUN mkdir /app
 WORKDIR /app
 RUN apk add --no-cache tzdata
