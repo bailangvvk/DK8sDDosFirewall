@@ -13,9 +13,10 @@ ADD record.lua   /app
 # RUN /usr/local/openresty/luajit/bin/luajit -b /app/protect.lua /app/protect.ljbc
 # RUN /usr/local/openresty/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
 
-RUN /usr/local/luajit/bin/luajit -b /app/stats.lua   /app/stats.ljbc
-RUN /usr/local/luajit/bin/luajit -b /app/protect.lua /app/protect.ljbc
-RUN /usr/local/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
+# 不用编译了 他本来运行时候就会自动编译成自己嘛 并且缓存
+# RUN /usr/local/luajit/bin/luajit -b /app/stats.lua   /app/stats.ljbc
+# RUN /usr/local/luajit/bin/luajit -b /app/protect.lua /app/protect.ljbc
+# RUN /usr/local/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
 
 # FROM --platform=linux/amd64 openresty/openresty:1.21.4.2-alpine
 # FROM openresty/openresty:1.21.4.2-alpine
@@ -37,5 +38,11 @@ ADD cert.key        /app/cert.key
 ADD cert.pem        /app/cert.pem
 ADD env.conf        /app/env.conf
 ADD nginx.conf      /app/nginx.conf
+
+# 更改文件权限给 nobody
+RUN chown -R nobody:nobody /app
+
+# 切换到非 root 用户
+USER nobody
 
 CMD ["openresty", "-c", "/app/nginx.conf"]
