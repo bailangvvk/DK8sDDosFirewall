@@ -28,9 +28,10 @@ RUN mkdir /app
 WORKDIR /app
 RUN apk add --no-cache tzdata
 ENV TZ Asia/Shanghai
-COPY --from=builder /app/stats.ljbc   /app/
-COPY --from=builder /app/protect.ljbc /app/
-COPY --from=builder /app/record.ljbc  /app/
+# 同样 也不需要拷过去了
+# COPY --from=builder /app/stats.ljbc   /app/
+# COPY --from=builder /app/protect.ljbc /app/
+# COPY --from=builder /app/record.ljbc  /app/
 ADD stats.lua       /app/stats.lua
 ADD protect.lua     /app/protect.lua
 ADD record.lua      /app/record.lua
