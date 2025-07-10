@@ -1,6 +1,6 @@
 # FROM openresty/openresty:1.21.4.2-alpine as builder
 # FROM openresty/openresty:1.27.1.2-alpine as builder
-FROM bailangvvking/openresty as builder
+FROM bailangvvking/openresty:latest as builder
 RUN mkdir /app
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN /usr/local/luajit/bin/luajit -b /app/record.lua  /app/record.ljbc
 
 # FROM --platform=linux/amd64 openresty/openresty:1.21.4.2-alpine
 # FROM openresty/openresty:1.21.4.2-alpine
-FROM bailangvvking/openresty
+FROM bailangvvking/openresty:latest
 EXPOSE 180 1443 13000
 
 RUN mkdir /app
